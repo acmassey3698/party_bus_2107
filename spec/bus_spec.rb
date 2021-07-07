@@ -53,6 +53,7 @@ describe Bus do
   context 'Passengers' do
     it 'Provides the number of passengers' do
       bus = Bus.new('Mikes Awesome Bus', 4)
+
       bus.add_passenger('Mike')
       bus.add_passenger('Megan')
       bus.add_passenger('Tim')
@@ -63,14 +64,19 @@ describe Bus do
     it 'Tells if bus is over capacity' do
       bus = Bus.new('Mikes Awesome Bus', 4)
       expect(bus.over_capacity?).to eq(false)
+
       bus.add_passenger('Mike')
       expect(bus.over_capacity?).to eq(false)
+
       bus.add_passenger('Megan')
       expect(bus.over_capacity?).to eq(false)
+
       bus.add_passenger('Tim')
       expect(bus.over_capacity?).to eq(false)
+
       bus.add_passenger('Eve')
       bus.add_passenger('Alice')
+      
       expect(bus.over_capacity?).to eq(true)
     end
   end
@@ -79,19 +85,27 @@ describe Bus do
   context 'Passengers' do
     it 'Kicks off oldest passenger' do
       bus = Bus.new('Mikes Awesome Bus', 4)
+
       bus.add_passenger('Mike')
       bus.add_passenger('Megan')
       bus.add_passenger('Tim')
       bus.add_passenger('James')
       bus.add_passenger('Cat')
       bus.add_passenger('Alice')
+
       expect(bus.kick_out).to eq(['Megan','Tim','James','Cat','Alice'])
+
       expect(bus.number_of_passengers).to eq(5)
+
       expect(bus.over_capacity?).to eq(true)
+
       bus.kick_out
       bus.kick_out
+
       expect(bus.number_of_passengers).to eq(3)
+
       expect(bus.over_capacity?).to eq(false)
+
       expect(bus.passengers).to eq(['James', 'Cat', 'Alice'])
     end
   end

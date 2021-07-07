@@ -1,5 +1,4 @@
 class Bus
-
   attr_reader :name, :capacity, :passengers
 
   def initialize(name, capacity)
@@ -32,5 +31,4 @@ class Bus
     @passengers.shift
     @passengers
   end
-
 end
