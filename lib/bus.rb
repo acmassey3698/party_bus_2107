@@ -21,11 +21,16 @@ class Bus
   end
 
   def over_capacity?
-    if @passengers.count <= 3
+    if @passengers.count <= 4
       false
     else
       true
     end
+  end
+
+  def kick_out
+    @passengers.shift
+    @passengers
   end
 
 end
